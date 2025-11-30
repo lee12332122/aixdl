@@ -52,7 +52,10 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 3. 이웃 ≥ MinPts → Core Point  
 4. Core Point로부터 연결된 점 확장  
 5. 조건 미달 시 Border 또는 Noise  
-6. 전체 데이터 처리 시까지 반복  
+6. 전체 데이터 처리 시까지 반복
+
+   <img width="526" height="416" alt="image" src="https://github.com/user-attachments/assets/eefafda4-5c49-4c86-8c78-a3b40bc9a147" />
+
 
 ---
 

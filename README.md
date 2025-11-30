@@ -1,19 +1,23 @@
 ---
 layout: post
-title: "밀도 기반 군집화(DBSCAN) "
+title: "밀도 기반 군집화(DBSCAN) 완전 정리"
 date: 2025-01-01 00:00:00 +0900
-
-**서울 기계공학부 김도윤**
-**서울 기게공학부 박준우**
-**서울 신소재공학부 이주연**
-**서울 기계공학부 이준범**
-
 categories: [Machine Learning, Clustering]
 tags: [DBSCAN, Density-Based, 군집화, 머신러닝]
 toc: true
 toc_sticky: true
 ---
 
+**서울 기계공학부 김도윤**  
+**서울 기계공학부 박준우**  
+**서울 신소재공학부 이주연**  
+**서울 기계공학부 이준범**
+
+# 밀도 기반 군집화(DBSCAN) 완전 정리
+
+PDF 문서를 바탕으로 **DBSCAN 알고리즘의 개념, 역사, 응용, 장단점, 실습 코드**를 모두 정리한 글입니다.
+
+---
 
 ## 📌 Part 1. 도입 (Introduction)
 

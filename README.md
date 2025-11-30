@@ -1,20 +1,11 @@
----
-layout: post
-title: "밀도 기반 군집화(DBSCAN)의 이해와 사용 방안의 고찰"
-categories: [Machine Learning, Clustering]
-tags: [DBSCAN, Density-Based, 군집화, 머신러닝]
-toc: true
-toc_sticky: true
----
+
+
+# 밀도 기반 군집화(DBSCAN)의 이해와 사용 방안의 고찰
 
 **서울 기계공학부 김도윤**  
 **서울 기계공학부 박준우**  
 **서울 신소재공학부 이주연**  
 **서울 기계공학부 이준범**
-
-# 밀도 기반 군집화(DBSCAN)의 이해와 사용 방안의 고찰
-
-
 
 ---
 

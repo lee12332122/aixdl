@@ -64,6 +64,9 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 - 이후 OPTICS, HDBSCAN, DENCLUE로 발전  
 - 고정밀 위치 데이터, 이상치 분리 필요성 증가로 활용 급증  
 
+
+<img width="598" height="285" alt="image" src="https://github.com/user-attachments/assets/37450140-7780-4a56-8034-31db7094ad8a" />
+
 ---
 
 ##  Part 4. 실제 응용 사례 
@@ -86,14 +89,52 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 - 유사 가격대 지역 분류  
 - 이상거래 탐지  
 
+<img width="518" height="342" alt="image" src="https://github.com/user-attachments/assets/d041f923-58b5-4f9c-8d24-ed53d46d9cdf" />
+
+
+
 ---
 
 ##  Part 5. 실습 가이드
 ### Python DBSCAN 구현 예시
 
+- python scikit-learn 라이브러리로 DBSCAN 사용 예
+<img width="573" height="125" alt="image" src="https://github.com/user-attachments/assets/92bb3269-a847-4122-9b03-ddf00ef9f564" />
+
+-최적의 eps, MinPts 선정법:
+
+    1. k-distance plot(팔꿈치 지점)
+    2. 여러 값 실험하여 군집, 노이즈 분포 직관적으로 점검
+
+   <img width="474" height="442" alt="image" src="https://github.com/user-attachments/assets/7a5b6337-503c-4051-90e0-7d2bfd982786" />
+
+
+
 ---
 
-##  Part 6. 사용 방안 고찰
+##  Part 6. 장단점 및 선택 가이드
+
+장점
+- 클러스터 개수 사전지정이 필요 없음
+- 임의의 형태(원형·불규칙·곁가지 등) 군집 감지
+- 이상치 자동 분리
+- 비선형 데이터도 우수
+단점
+- 파라미터(eps, MinPts) 튜닝 중요, 데이터 분포 강하게 영향
+- 다양한 밀도/잡음 데이터에서는 오동작 가능
+- 고차원 데이터(10차원↑)에서는 K-means에 비해 성능 저하
+적합상황
+- 이상치 감지 우선, 자연현상·지도·GPS 등 위치 기반 데이터
+- 비정형, 분포가 복잡한 데이터
+- 미리 군집 수를 모를 때
+
+
+<img width="575" height="235" alt="image" src="https://github.com/user-attachments/assets/89ea4a79-b217-4f3e-a87d-a4a51ca8b338" />
+
+
+
+
+##  Part 7. 사용 방안 고찰
 
 ### 버스·지하철 승하차 데이터를 활용한 도시 핫플레이스 탐구
 
@@ -185,6 +226,12 @@ DBSCAN을 적용하면,
 **도시 핫플레이스 탐색, 교통 정책 설계, 상권 분석, 안전 시스템 구축** 등 다양한 분야에 직접 활용 가능하다.
 
 ---
+###  Part 8. 결론 및 추가 자료
+
+핵심 요약
+- DBSCAN은 K-means로는 잡히지 않는 복잡·비구형 군집이나 노이즈를 잘 
+구분하는 강력한 도구
+- 단, eps·MinPts 등 파라미터 조정 필요성과 데이터의 밀도 특성 고려가 핵심
 
 
 

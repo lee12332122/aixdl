@@ -9,7 +9,7 @@
 
 ---
 
-##  Part 1. 도입 (Introduction)
+##  Part 1. 도입 
 
 ### 왜 군집화가 필요한가?
 데이터 속에서 ‘비슷한 것끼리 묶기’는 인공지능과 데이터 분석의 핵심 과제입니다.
@@ -31,7 +31,7 @@ K-means는 다음 문제점이 존재합니다:
 
 ---
 
-##  Part 2. 핵심 개념 (Core Concepts)
+##  Part 2. 핵심 개념 
 
 ### DBSCAN이란?
 DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은  
@@ -56,14 +56,14 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 
 ---
 
-##  Part 3. 역사와 발전 (History & Evolution)
+##  Part 3. 역사와 발전 
 - 1996년 Ester, Kriegel, Sander, Xu가 DBSCAN 발표  
 - 이후 OPTICS, HDBSCAN, DENCLUE로 발전  
 - 고정밀 위치 데이터, 이상치 분리 필요성 증가로 활용 급증  
 
 ---
 
-##  Part 4. 실제 응용 사례 (Real-World Applications)
+##  Part 4. 실제 응용 사례 
 
 ### 1. 도시 교통 데이터 분석
 - GPS 데이터 → 혼잡 지역 자동 탐지  
@@ -85,8 +85,7 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 
 ---
 
-##  Part 5. 실습 가이드 (Hands-on Tutorial)
-
+##  Part 5. 실습 가이드
 ### Python DBSCAN 구현 예시
 
 ---

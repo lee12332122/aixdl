@@ -14,11 +14,6 @@ toc: true
 toc_sticky: true
 ---
 
-# 밀도 기반 군집화(DBSCAN) 완전 정리
-
-PDF 문서를 바탕으로 **DBSCAN 알고리즘의 개념, 역사, 응용, 장단점, 실습 코드**를 모두 정리한 글입니다.
-
----
 
 ## 📌 Part 1. 도입 (Introduction)
 

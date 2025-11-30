@@ -18,7 +18,7 @@ toc_sticky: true
 
 ---
 
-## 📌 Part 1. 도입 (Introduction)
+##  Part 1. 도입 (Introduction)
 
 ### 왜 군집화가 필요한가?
 데이터 속에서 ‘비슷한 것끼리 묶기’는 인공지능과 데이터 분석의 핵심 과제입니다.
@@ -40,7 +40,7 @@ K-means는 다음 문제점이 존재합니다:
 
 ---
 
-## 📌 Part 2. 핵심 개념 (Core Concepts)
+##  Part 2. 핵심 개념 (Core Concepts)
 
 ### DBSCAN이란?
 DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은  
@@ -65,14 +65,14 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 
 ---
 
-## 📌 Part 3. 역사와 발전 (History & Evolution)
+##  Part 3. 역사와 발전 (History & Evolution)
 - 1996년 Ester, Kriegel, Sander, Xu가 DBSCAN 발표  
 - 이후 OPTICS, HDBSCAN, DENCLUE로 발전  
 - 고정밀 위치 데이터, 이상치 분리 필요성 증가로 활용 급증  
 
 ---
 
-## 📌 Part 4. 실제 응용 사례 (Real-World Applications)
+##  Part 4. 실제 응용 사례 (Real-World Applications)
 
 ### 1. 도시 교통 데이터 분석
 - GPS 데이터 → 혼잡 지역 자동 탐지  
@@ -94,13 +94,13 @@ DBSCAN(Density-Based Spatial Clustering of Applications with Noise)은
 
 ---
 
-## 📌 Part 5. 실습 가이드 (Hands-on Tutorial)
+##  Part 5. 실습 가이드 (Hands-on Tutorial)
 
 ### Python DBSCAN 구현 예시
 
 ---
 
-## 📌 Part 6. 사용 방안 고찰
+##  Part 6. 사용 방안 고찰
 
 ### 버스·지하철 승하차 데이터를 활용한 도시 핫플레이스 탐구
 
@@ -110,7 +110,7 @@ DBSCAN은 공간 기반 데이터를 다루는 데 특히 강력하기 때문에
 
 ---
 
-### 🔍 1. 데이터 선정
+###  1. 데이터 선정
 
 - **버스 승·하차 데이터**  
   - 정류장 코드, 좌표(위·경도), 시간대별 승·하차 인원  
@@ -121,7 +121,7 @@ DBSCAN은 공간 기반 데이터를 다루는 데 특히 강력하기 때문에
 
 ---
 
-### 🔧 2. DBSCAN 적용 방식
+###  2. DBSCAN 적용 방식
 
 핵심 아이디어는 특정 시간대·특정 지역에서 승하차 인원이 과밀하게 형성된 지점을 군집(Hotplace)으로 파악하는 것이다.
 
@@ -136,7 +136,7 @@ DBSCAN은 공간 기반 데이터를 다루는 데 특히 강력하기 때문에
 
 ---
 
-### 🔥 3. 기대되는 분석 결과
+###  3. 기대되는 분석 결과
 
 #### **① 시간대별 도시 핫플레이스 탐색**
 - 오전 7–9시 → 출근 중심지(대기업 밀집 구역, 지하철 환승역)  
@@ -169,7 +169,7 @@ DBSCAN은 군집 수를 미리 정하지 않기 때문에
 
 ---
 
-### 🧭 4. 실제 흐름 예시 (가상의 시나리오)
+###  4. 실제 흐름 예시 (가상의 시나리오)
 
 - 오전 8시: 강남역·여의도역·시청역 주변 군집 폭발 → 직장 중심  
 - 오후 2시: 홍대·성수·잠실 롯데월드타워 군집 증가 → 관광/여가  
@@ -180,7 +180,7 @@ DBSCAN은 군집 수를 미리 정하지 않기 때문에
 
 ---
 
-### 🎯 5. 결론: DBSCAN의 강점과 활용 가치
+###  5. 결론: DBSCAN의 강점과 활용 가치
 
 버스·지하철 승하차 데이터는 도시의 실제 움직임을 가장 잘 보여주는 데이터 중 하나다.  
 DBSCAN을 적용하면,

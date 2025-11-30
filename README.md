@@ -1,7 +1,6 @@
 ---
 layout: post
-title: "밀도 기반 군집화(DBSCAN) 완전 정리"
-date: 2025-01-01 00:00:00 +0900
+title: "밀도 기반 군집화(DBSCAN)의 이해와 사용 방안의 고찰"
 categories: [Machine Learning, Clustering]
 tags: [DBSCAN, Density-Based, 군집화, 머신러닝]
 toc: true

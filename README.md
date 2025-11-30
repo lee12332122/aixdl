@@ -1,7 +1,13 @@
 ---
 layout: post
-title: "밀도 기반 군집화(DBSCAN) 완전 정리"
+title: "밀도 기반 군집화(DBSCAN) "
 date: 2025-01-01 00:00:00 +0900
+조원: 
+서울 기계공학부 김도윤
+서울 기게공학부 이준범
+서울 신소재공학부 이주연
+서울 기계공학부 이준범
+
 categories: [Machine Learning, Clustering]
 tags: [DBSCAN, Density-Based, 군집화, 머신러닝]
 toc: true

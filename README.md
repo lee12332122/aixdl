@@ -94,8 +94,6 @@ import matplotlib.pyplot as plt
 X_moon, y_moon = make_moons(n_samples=1000, noise=0.05, random_state=42)  
 X_circle, y_circle = make_circles(n_samples=1000, factor=0.5, noise=0.05, random_state=42)  
 
--------------------------------------------  
-
 fig, axes = plt.subplots(1, 2, figsize=(10, 4))  
 axes[^0].scatter(X_moon[:, 0], X_moon[:, 1], s=5)  
 axes[^0].set_title("Two Moons")  

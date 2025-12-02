@@ -105,8 +105,9 @@ plt.show()
 
 -------------------------------------------  
 
-기본 수식  
-	ϵ-이웃(ϵ-neighborhood):  
+**기본 수식**  
+
+ϵ-이웃(ϵ-neighborhood):  
 N_ϵ (p)={q∈R^d∣‖p-q‖≤ϵ}  
 	핵심 점(Core point):  
 "core"(p) ⟺ |N_ϵ (p)|≥"MinPts"   
@@ -114,6 +115,7 @@ N_ϵ (p)={q∈R^d∣‖p-q‖≤ϵ}
 	노이즈(Noise): 위 두 조건을 모두 만족하지 않는 점.  
 
 -------------------------------------------
+
 **Code2. 기본 사용 코드**
 
 from sklearn.cluster import DBSCAN
@@ -149,8 +151,9 @@ DBSCAN의 군집은 밀도 도달 가능성(density‑reachability) 과 밀도 �
 
 <img width="991" height="540" alt="image" src="https://github.com/user-attachments/assets/faa4c093-dc62-4537-a28e-25b5c02d2006" />
 
-수식 정의  
-	직접 밀도 도달 가능(Directly density-reachable):  
+**수식 정의**  
+
+직접 밀도 도달 가능(Directly density-reachable):  
 〖"DirReach" 〗_ϵ (p←q) ⟺ (p∈N_ϵ (q))∧"core"(q)  
 	밀도 도달 가능(Density-reachable):  
 〖"Reach" 〗_ϵ (p←q) ⟺ ∃{p_1,…,p_n}:p_1=q,p_n=p,∀i,〖"DirReach" 〗_ϵ (p_(i+1)←p_i)  
@@ -162,15 +165,16 @@ DBSCAN의 군집은 밀도 도달 가능성(density‑reachability) 과 밀도 �
 
 from sklearn.neighbors import NearestNeighbors
 
-k = 4  # MinPts와 비슷하게 잡음
+k = 4   (MinPts와 비슷하게 잡음)
 nn = NearestNeighbors(n_neighbors=k)
 nn.fit(X_moon)
 distances, indices = nn.kneighbors(X_moon)
 
-# 각 점의 k번째 이웃 거리 (core distance 후보)
+ (각 점의 k번째 이웃 거리 (core distance 후보))
 core_dist = distances[:, -1]
 
 -------------------------------------
+
 **Deep Dive — ϵ·MinPts 선정의 예술**
 
 DBSCAN에서 가장 중요한 것 중 하나가 파라미터 튜닝이다. MinPts는 보통 데이터 차원 수보다 하나 이상 크게 잡고(예: 2D 데이터면 4 이상), 실무에서는 4~10 사이 값에서 시작해 보는 경우가 많다. ϵ 은 k‑distance plot으로 정하는 것이 표준적이다. 각 점에 대해 k="MinPts" 번째 최근접 이웃까지의 거리를 계산하고, 이 값을 오름차순으로 나열해 그리면 그래프가 처음에는 완만히 증가하다가 어느 지점부터 급격히 꺾인다. 

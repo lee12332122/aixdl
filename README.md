@@ -122,11 +122,13 @@ dbscan = DBSCAN(eps=0.3, min_samples=5)  # eps = ε, min_samples = MinPts
 labels = dbscan.fit_predict(X_moon)
 
 # -1 label은 노이즈
+
 import numpy as np
 unique_labels = np.unique(labels)
 print("Clusters:", unique_labels)
 
 # 시각화
+
 plt.figure(figsize=(5, 4))
 for lab in unique_labels:
     mask = labels == lab
@@ -137,6 +139,7 @@ for lab in unique_labels:
 plt.legend()
 plt.title("DBSCAN on Two Moons")
 plt.show()
+
 -------------------------------------
 **<Mathematical Insight > — 밀도 도달 가능성과 연결성**
 
@@ -145,13 +148,14 @@ DBSCAN의 군집은 밀도 도달 가능성(density‑reachability) 과 밀도 �
 
 <img width="991" height="540" alt="image" src="https://github.com/user-attachments/assets/faa4c093-dc62-4537-a28e-25b5c02d2006" />
 
-수식 정의
-	직접 밀도 도달 가능(Directly density-reachable):
-〖"DirReach" 〗_ϵ (p←q) ⟺ (p∈N_ϵ (q))∧"core"(q)
-	밀도 도달 가능(Density-reachable):
-〖"Reach" 〗_ϵ (p←q) ⟺ ∃{p_1,…,p_n}:p_1=q,p_n=p,∀i,〖"DirReach" 〗_ϵ (p_(i+1)←p_i)
-	밀도 연결(Density-connected):
-〖"Conn" 〗_ϵ (p,q) ⟺ ∃o:〖"Reach" 〗_ϵ (p←o)∧〖"Reach" 〗_ϵ (q←o)
+수식 정의  
+	직접 밀도 도달 가능(Directly density-reachable):  
+〖"DirReach" 〗_ϵ (p←q) ⟺ (p∈N_ϵ (q))∧"core"(q)  
+	밀도 도달 가능(Density-reachable):  
+〖"Reach" 〗_ϵ (p←q) ⟺ ∃{p_1,…,p_n}:p_1=q,p_n=p,∀i,〖"DirReach" 〗_ϵ (p_(i+1)←p_i)  
+	밀도 연결(Density-connected):  
+〖"Conn" 〗_ϵ (p,q) ⟺ ∃o:〖"Reach" 〗_ϵ (p←o)∧〖"Reach" 〗_ϵ (q←o)  
+
 --------------------------------------
 **Code3. reachability 개념 이해 코드**
 
@@ -164,6 +168,7 @@ distances, indices = nn.kneighbors(X_moon)
 
 # 각 점의 k번째 이웃 거리 (core distance 후보)
 core_dist = distances[:, -1]
+
 -------------------------------------
 **Deep Dive — ϵ·MinPts 선정의 예술**
 
@@ -181,7 +186,8 @@ f(j)=d_k (p_((j))),d_k (p_((1)))≤⋯≤d_k (p_((n)))
 <img width="991" height="991" alt="image" src="https://github.com/user-attachments/assets/83d0fa7b-bb22-413b-993b-525d38b5f1d1" />
 <그림 4 “DBSCAN에서 핵심 하이퍼파라미터인 ϵ”>
 
-ϵ 값에 따라 동일한 데이터라도 군집 결과가 어떻게 달라지는지를 보여준다. 왼쪽(ε = 0.1, 너무 작음)에서는 대부분의 점이 노이즈로 남거나 잘게 쪼개진 작은 군집들로만 나타나고, 가운데(ε = 0.5, 최적 구간)에서는 밀도가 높은 영역이 적절한 개수의 클러스터로 깔끔하게 분리된다. 오른쪽(ε = 1.0, 너무 큼)에서는 서로 다른 집단까지 하나의 거대한 군집으로 뭉개져 버려, ε 선택이 과소군집·과대군집을 결정하는 핵심이라는 점을 직관적으로 보여준다.
+**ϵ 값에 따라 동일한 데이터라도 군집 결과가 어떻게 달라지는지를 보여준다. 왼쪽(ε = 0.1, 너무 작음)에서는 대부분의 점이 노이즈로 남거나 잘게 쪼개진 작은 군집들로만 나타나고, 가운데(ε = 0.5, 최적 구간)에서는 밀도가 높은 영역이 적절한 개수의 클러스터로 깔끔하게 분리된다. 오른쪽(ε = 1.0, 너무 큼)에서는 서로 다른 집단까지 하나의 거대한 군집으로 뭉개져 버려, ε 선택이 과소군집·과대군집을 결정하는 핵심이라는 점을 직관적으로 보여준다.**
+
 ----------------------------------
    Deep Dive — ϵ·MinPts 선택
 	code4. k-distance plot : NearestNeighbors로 k번째 거리 계산, plt.plot으로 그래프 생성.
@@ -213,7 +219,9 @@ for i, ms in enumerate(min_samples_values):
         ax.set_title(f"eps={eps}, MinPts={ms}")
 plt.tight_layout()
 plt.show()
+
 -------------------------------------
+
 **< Code & Visualization — Python 실습>**
 
 이제 코드를 통해 직접 눈으로 확인해 보자. Python에서는 scikit‑learn의 DBSCAN 클래스를 사용해 몇 줄만으로 밀도 기반 군집화를 시도할 수 있다. make_moons, make_circles 같은 toy 데이터셋을 활용하면, K‑Means가 실패하는 비선형 구조를 DBSCAN이 어떻게 자연스럽게 복원하는지 한눈에 볼 수 있다.
@@ -241,7 +249,9 @@ for ax in axes:
     ax.set_xticks([]); ax.set_yticks([])
 plt.suptitle("K-Means vs DBSCAN on Two Moons")
 plt.show()
+
 -------------------------------------------
+
 **< 장단점 & 언제 사용하는 것이 좋을까>**
 장점
 ★ K‑Means로는 잡기 어려운 비선형 군집과 이상치를 한 번에 처리할 수 있다.

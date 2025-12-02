@@ -8,23 +8,22 @@
 **서울 기계공학부 이준범**
 
 ---
-<h2 style="font-size: 30px; margin-top: 40px; margin-bottom: 10px;">목차</h2>
+<div style="margin-top: 50px; margin-bottom: 50px; font-size: 40px; line-height: 1.8;">
 
-<div style="font-size: 20px; line-height: 1.8; margin-bottom: 40px;">
-1. **Intro: 왜 '밀도'인가? (K-Means의 한계와 비교)**  
-2. **Core Theory: DBSCAN란 (Epsilon, MinPts 정의)**  
-3. **Mathematical Insight: 밀도 도달 가능성**  
-4. **Deep Dive: 파라미터 선택 (K-distance Graph)**  
-5. **Code & Visualization: Python 구현**  
-6. **Beyond DBSCAN: OPTICS / HDBSCAN**  
-7. **Real-world Application**  
-8. **Conclusion & References**  
-</div>
-
+## 목차  
+1. **Intro: 왜 '밀도'인가? (K-Means의 한계와 비교)**
+2. **Core Theory: DBSCAN란 (Epsilon, MinPts, Core/Border/Noise Point 정의)**
+3. **Mathematical Insight: 밀도 도달 가능성(Density-Reachability)과 연결성(Connectivity)**
+4. **Deep Dive: 파라미터(ϵ, MinPts) 선정 (K-distance Graph 활용법)**
+5. **Code & Visualization: Python (Scikit-learn) 구현 및 단계별 시각화)**
+6. **Beyond DBSCAN: 한계점과 진화된 모델들 (OPTICS, HDBSCAN 소개)**
+7. **Real-world Application: 실제 적용 사례**
+8. **Conclusion & References: 요약 및 논문/자료 출처)**
 
 </div>
 
 
+---
 
 ##   <Intro> ‘군집화’는 왜 필요하며, 왜 하필 '밀도'인가? 
  "클러스터링(비슷한 데이터끼리 묶기)"는 데이터의 구조와 패턴을 파악하여 시너지 효과를 극대화 하는 데이터 과학의 핵심 기법이다. 데이터의 구조를 이해하고 데이터의 의미를 발견하여 숨어 있는 패턴까지 찾아내 업무자동화, 고객분석, 리스크 예측에 탁월한 효과를 보인다.

@@ -87,12 +87,12 @@ DBSCAN(DBSCAN: Density-Based Spatial Clustering of Applications with Noise)은 �
 DBSCAN은 임의의 점에서 시작해, 밀도가 충분한 이웃들을 계속 따라가며 확장해 나간다. 이렇게 연결된 점들의 집합이 하나의 군집이 되고, 어디에도 속하지 못한 점들은 이상치로 남는다. 이 때문에 DBSCAN은 군집 개수를 미리 정할 필요가 없고, 노이즈 검출까지 동시에 처리할 수 있는 것이다.
 
 ex)
-**Code 1. 가장 간단한 DBSCAN 예제 (numpy 배열 6개 점)**
-•	from sklearn.datasets import make_moons, make_circles
-import matplotlib.pyplot as plt
+**Code 1. 가장 간단한 DBSCAN 예제 (numpy 배열 6개 점)**  
+•	from sklearn.datasets import make_moons, make_circles  
+import matplotlib.pyplot as plt  
 
-X_moon, y_moon = make_moons(n_samples=1000, noise=0.05, random_state=42)
-X_circle, y_circle = make_circles(n_samples=1000, factor=0.5, noise=0.05, random_state=42)
+X_moon, y_moon = make_moons(n_samples=1000, noise=0.05, random_state=42)  
+X_circle, y_circle = make_circles(n_samples=1000, factor=0.5, noise=0.05, random_state=42)  
 
 -------------------------------------------  
 

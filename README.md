@@ -400,38 +400,38 @@ DBSCAN을 적용하면,
 	import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
-# df: columns = ["lat", "lon"]
-coords = df[["lat", "lon"]].values
-scaler = StandardScaler()
-coords_scaled = scaler.fit_transform(coords)
-
-db = DBSCAN(eps=0.2, min_samples=10)
-labels = db.fit_predict(coords_scaled)
-
-plt.figure(figsize=(6, 6))
-plt.scatter(df["lon"], df["lat"], c=labels, s=5, cmap="tab20")
-plt.xlabel("Longitude"); plt.ylabel("Latitude")
-plt.title("Density-based clustering of geographic coordinates")
-plt.show()
+df: columns = ["lat", "lon"]  
+coords = df[["lat", "lon"]].values  
+scaler = StandardScaler()  
+coords_scaled = scaler.fit_transform(coords)  
+  
+db = DBSCAN(eps=0.2, min_samples=10)  
+labels = db.fit_predict(coords_scaled)  
+  
+plt.figure(figsize=(6, 6))  
+plt.scatter(df["lon"], df["lat"], c=labels, s=5, cmap="tab20")  
+plt.xlabel("Longitude"); plt.ylabel("Latitude")  
+plt.title("Density-based clustering of geographic coordinates")  
+plt.show()  
 
  
-Beyond DBSCAN — OPTICS와 HDBSCAN
-OPTICS 핵심 수식 (reachability / core distance)
-	코어 거리(core distance):
-〖"core\_dist" 〗_"MinPts"  (p)={■("distance to MinPts-th nearest neighbor of " p,&|N_ϵ (p)|≥"MinPts" @∞,&"otherwise" )┤
-	도달 가능 거리(reachability distance):
-"reachability\_dist"(p∣o)=max(〖"core\_dist" 〗_"MinPts"  (o),d(o,p))
-OPTICS는 각 점을 방문하면서 이 reachability distance를 기록하고, 이를 y축으로 하는 reachability plot을 만든다.
-code7. OPTICS 간단 코드
-from sklearn.cluster import OPTICS
+Beyond DBSCAN — OPTICS와 HDBSCAN  
+OPTICS 핵심 수식 (reachability / core distance)  
+	코어 거리(core distance):  
+〖"core\_dist" 〗_"MinPts"  (p)={■("distance to MinPts-th nearest neighbor of " p,&|N_ϵ (p)|≥"MinPts" @∞,&"otherwise" )┤  
+	도달 가능 거리(reachability distance):  
+"reachability\_dist"(p∣o)=max(〖"core\_dist" 〗_"MinPts"  (o),d(o,p))  
+OPTICS는 각 점을 방문하면서 이 reachability distance를 기록하고, 이를 y축으로 하는 reachability plot을 만든다.  
+code7. OPTICS 간단 코드  
+from sklearn.cluster import OPTICS  
 
-optics = OPTICS(min_samples=10, xi=0.05, min_cluster_size=0.05)
-optics_labels = optics.fit_predict(X_moon)
+optics = OPTICS(min_samples=10, xi=0.05, min_cluster_size=0.05)  
+optics_labels = optics.fit_predict(X_moon)  
 
-plt.figure(figsize=(5, 4))
-plt.scatter(X_moon[:, 0], X_moon[:, 1], c=optics_labels, s=5, cmap="tab10")
-plt.title("OPTICS clustering")
-plt.show()
+plt.figure(figsize=(5, 4))  
+plt.scatter(X_moon[:, 0], X_moon[:, 1], c=optics_labels, s=5, cmap="tab10")  
+plt.title("OPTICS clustering")  
+plt.show()  
 
  
 HDBSCAN 개념 수식: HDBSCAN은 다양한 MinPts(논문에서는 m_pts) 값에 대해 mutual reachability distance 로 그래프를 만들고, 그 MST에서 여러 밀도 레벨의 군집 계층을 도출한다.
@@ -443,15 +443,15 @@ code8. HDBSCAN 파이썬 예시
 
 import hdbscan
 
-clusterer = hdbscan.HDBSCAN(min_cluster_size=20, min_samples=5)
-hdb_labels = clusterer.fit_predict(X_moon)
+clusterer = hdbscan.HDBSCAN(min_cluster_size=20, min_samples=5)  
+hdb_labels = clusterer.fit_predict(X_moon)  
 
-plt.figure(figsize=(5, 4))
-plt.scatter(X_moon[:, 0], X_moon[:, 1], c=hdb_labels, s=5, cmap="tab10")
-plt.title("HDBSCAN clustering")
-plt.show()
+plt.figure(figsize=(5, 4))  
+plt.scatter(X_moon[:, 0], X_moon[:, 1], c=hdb_labels, s=5, cmap="tab10")  
+plt.title("HDBSCAN clustering")  
+plt.show()  
 
-
+---
  
    https://hex.tech/blog/comparing-density-based-methods/      
 	https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html   

@@ -8,7 +8,7 @@
 **서울 기계공학부 이준범**
 
 ---
-<div style="margin-top: 50px; margin-bottom: 50px; font-size: 40px; line-height: 1.8;">
+<div style="margin-top: 60px; margin-bottom: 60px; font-size: 60px; line-height: 1.8;">
 
 ## 목차  
 1. **Intro: 왜 '밀도'인가? (K-Means의 한계와 비교)**

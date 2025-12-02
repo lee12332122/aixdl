@@ -12,12 +12,19 @@
 
 ## 목차  
 1. **Intro: 왜 '밀도'인가? (K-Means의 한계와 비교)**
+   
 2. **Core Theory: DBSCAN란 (Epsilon, MinPts, Core/Border/Noise Point 정의)**
+
 3. **Mathematical Insight: 밀도 도달 가능성(Density-Reachability)과 연결성(Connectivity)**
+   
 4. **Deep Dive: 파라미터(ϵ, MinPts) 선정 (K-distance Graph 활용법)**
+   
 5. **Code & Visualization: Python (Scikit-learn) 구현 및 단계별 시각화)**
+    
 6. **Beyond DBSCAN: 한계점과 진화된 모델들 (OPTICS, HDBSCAN 소개)**
+ 
 7. **Real-world Application: 실제 적용 사례**
+
 8. **Conclusion & References: 요약 및 논문/자료 출처)**
 
 </div>

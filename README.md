@@ -94,21 +94,21 @@ import matplotlib.pyplot as plt
 X_moon, y_moon = make_moons(n_samples=1000, noise=0.05, random_state=42)
 X_circle, y_circle = make_circles(n_samples=1000, factor=0.5, noise=0.05, random_state=42)
 
--------------------------------------------
-fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-axes[^0].scatter(X_moon[:, 0], X_moon[:, 1], s=5)
-axes[^0].set_title("Two Moons")
-axes[^1].scatter(X_circle[:, 0], X_circle[:, 1], s=5)
-axes[^1].set_title("Concentric Circles")
-plt.show()
--------------------------------------------
-기본 수식
-	ϵ-이웃(ϵ-neighborhood):
-N_ϵ (p)={q∈R^d∣‖p-q‖≤ϵ}
-	핵심 점(Core point):
-"core"(p) ⟺ |N_ϵ (p)|≥"MinPts" 
-	경계 점(Border point): 핵심 점은 아니지만, 어떤 핵심 점 q의 ϵ-이웃 안에 있는 점.
-	노이즈(Noise): 위 두 조건을 모두 만족하지 않는 점.
+-------------------------------------------  
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))  
+axes[^0].scatter(X_moon[:, 0], X_moon[:, 1], s=5)  
+axes[^0].set_title("Two Moons")  
+axes[^1].scatter(X_circle[:, 0], X_circle[:, 1], s=5)  
+axes[^1].set_title("Concentric Circles")  
+plt.show()  
+-------------------------------------------  
+기본 수식  
+	ϵ-이웃(ϵ-neighborhood):  
+N_ϵ (p)={q∈R^d∣‖p-q‖≤ϵ}  
+	핵심 점(Core point):  
+"core"(p) ⟺ |N_ϵ (p)|≥"MinPts"   
+	경계 점(Border point): 핵심 점은 아니지만, 어떤 핵심 점 q의 ϵ-이웃 안에 있는 점.  
+	노이즈(Noise): 위 두 조건을 모두 만족하지 않는 점.  
 -------------------------------------------
 **Code2. 기본 사용 코드**
 

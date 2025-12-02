@@ -121,13 +121,13 @@ from sklearn.cluster import DBSCAN
 dbscan = DBSCAN(eps=0.3, min_samples=5)  # eps = ε, min_samples = MinPts
 labels = dbscan.fit_predict(X_moon)
 
-# -1 label은 노이즈
+ (-1 label은 노이즈)
 
 import numpy as np
 unique_labels = np.unique(labels)
 print("Clusters:", unique_labels)
 
-# 시각화
+ (시각화)
 
 plt.figure(figsize=(5, 4))
 for lab in unique_labels:
@@ -141,6 +141,7 @@ plt.title("DBSCAN on Two Moons")
 plt.show()
 
 -------------------------------------
+
 **<Mathematical Insight > — 밀도 도달 가능성과 연결성**
 
 DBSCAN의 군집은 밀도 도달 가능성(density‑reachability) 과 밀도 연결성(density‑connectivity) 으로 정의된다. 점 p가 점 q로부터 직접 밀도 도달 가능하려면, p가 q의 ϵ-이웃 안에 있고, q가 핵심 점이어야 한다. 여러 개의 직접 도달 가능한 점들을 체인처럼 이어 나가서 q=p_1,p_2,…,p_n=p 를 만들 수 있다면, p는 q로부터 밀도 도달 가능하다고 정의한다.

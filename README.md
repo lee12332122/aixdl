@@ -199,38 +199,38 @@ f(j)=d_k (p_((j))),d_k (p_((1)))≤⋯≤d_k (p_((n)))
 
 **ϵ 값에 따라 동일한 데이터라도 군집 결과가 어떻게 달라지는지를 보여준다. 왼쪽(ε = 0.1, 너무 작음)에서는 대부분의 점이 노이즈로 남거나 잘게 쪼개진 작은 군집들로만 나타나고, 가운데(ε = 0.5, 최적 구간)에서는 밀도가 높은 영역이 적절한 개수의 클러스터로 깔끔하게 분리된다. 오른쪽(ε = 1.0, 너무 큼)에서는 서로 다른 집단까지 하나의 거대한 군집으로 뭉개져 버려, ε 선택이 과소군집·과대군집을 결정하는 핵심이라는 점을 직관적으로 보여준다.**
 
-----------------------------------
-# <Deep Dive — ϵ·MinPts 선택>
 
-code4. k-distance plot : NearestNeighbors로 k번째 거리 계산, plt.plot으로 그래프 생성.
-k = 4
-nn = NearestNeighbors(n_neighbors=k)
-nn.fit(X_moon)
-distances, _ = nn.kneighbors(X_moon)
+ **Deep Dive — ϵ·MinPts 선택**
 
-k_distances = np.sort(distances[:, -1])
-plt.figure(figsize=(6, 4))
-plt.plot(k_distances)
-plt.ylabel("k-distance")
-plt.xlabel("Points sorted by distance to k-th nearest neighbor")
-plt.title("k-distance plot for ε selection")
-plt.show()
+code4. k-distance plot : NearestNeighbors로 k번째 거리 계산, plt.plot으로 그래프 생성. 
+k = 4 
+nn = NearestNeighbors(n_neighbors=k) 
+nn.fit(X_moon) 
+distances, _ = nn.kneighbors(X_moon) 
 
-   epsilon 민감도 그리드 코드 스케치
-	eps_values = [0.1, 0.2, 0.3]
-min_samples_values = [3, 5, 10]
+k_distances = np.sort(distances[:, -1]) 
+plt.figure(figsize=(6, 4))  
+plt.plot(k_distances) 
+plt.ylabel("k-distance") 
+plt.xlabel("Points sorted by distance to k-th nearest neighbor") 
+plt.title("k-distance plot for ε selection") 
+plt.show() 
 
-fig, axes = plt.subplots(len(min_samples_values), len(eps_values), figsize=(9, 9))
-for i, ms in enumerate(min_samples_values):
-    for j, eps in enumerate(eps_values):
-        model = DBSCAN(eps=eps, min_samples=ms)
-        labels = model.fit_predict(X_moon)
-        ax = axes[i, j]
-        ax.scatter(X_moon[:, 0], X_moon[:, 1], c=labels, s=5, cmap="tab10")
-        ax.set_xticks([]); ax.set_yticks([])
-        ax.set_title(f"eps={eps}, MinPts={ms}")
-plt.tight_layout()
-plt.show()
+   epsilon 민감도 그리드 코드 스케치 
+	eps_values = [0.1, 0.2, 0.3] 
+min_samples_values = [3, 5, 10] 
+
+fig, axes = plt.subplots(len(min_samples_values), len(eps_values), figsize=(9, 9)) 
+for i, ms in enumerate(min_samples_values): 
+    for j, eps in enumerate(eps_values): 
+        model = DBSCAN(eps=eps, min_samples=ms) 
+        labels = model.fit_predict(X_moon) 
+        ax = axes[i, j] 
+        ax.scatter(X_moon[:, 0], X_moon[:, 1], c=labels, s=5, cmap="tab10") 
+        ax.set_xticks([]); ax.set_yticks([]) 
+        ax.set_title(f"eps={eps}, MinPts={ms}") 
+plt.tight_layout() 
+plt.show() 
 
 -------------------------------------
 
@@ -241,27 +241,28 @@ plt.show()
 
 **Code5. Python으로 DBSCAN 살려 보기**
 
-from sklearn.cluster import KMeans
+from sklearn.cluster import KMeans 
+ 
+**K-Means vs DBSCAN on two moons** 
 
-** K-Means vs DBSCAN on two moons **
-kmeans = KMeans(n_clusters=2, random_state=42)
-km_labels = kmeans.fit_predict(X_moon)
-
-dbscan = DBSCAN(eps=0.2, min_samples=5)
-db_labels = dbscan.fit_predict(X_moon)
-
-fig, axes = plt.subplots(1, 2, figsize=(10, 4))
-axes[^0].scatter(X_moon[:, 0], X_moon[:, 1], c=km_labels, s=5, cmap="tab10")
-axes[^0].set_title("K-Means")
-
-axes[^1].scatter(X_moon[:, 0], X_moon[:, 1], c=db_labels, s=5, cmap="tab10")
-axes[^1].set_title("DBSCAN")
-
-for ax in axes:
-    ax.set_xticks([]); ax.set_yticks([])
-plt.suptitle("K-Means vs DBSCAN on Two Moons")
-plt.show()
-
+kmeans = KMeans(n_clusters=2, random_state=42) 
+km_labels = kmeans.fit_predict(X_moon) 
+ 
+dbscan = DBSCAN(eps=0.2, min_samples=5) 
+db_labels = dbscan.fit_predict(X_moon) 
+ 
+fig, axes = plt.subplots(1, 2, figsize=(10, 4)) 
+axes[^0].scatter(X_moon[:, 0], X_moon[:, 1], c=km_labels, s=5, cmap="tab10") 
+axes[^0].set_title("K-Means") 
+ 
+axes[^1].scatter(X_moon[:, 0], X_moon[:, 1], c=db_labels, s=5, cmap="tab10") 
+axes[^1].set_title("DBSCAN") 
+ 
+for ax in axes: 
+    ax.set_xticks([]); ax.set_yticks([]) 
+plt.suptitle("K-Means vs DBSCAN on Two Moons") 
+plt.show() 
+ 
 -------------------------------------------
 
 # < 장단점 & 언제 사용하는 것이 좋을까>
@@ -487,33 +488,37 @@ DBSCAN을 적용하면,
 
 정리하자면, DBSCAN은 “밀도가 높은 영역=군집”이라는 단순한 아이디어로부터 출발해, K‑Means가 놓치는 복잡한 클러스터 구조와 이상치를 동시에 다룰 수 있는 강력한 도구다. ϵ 과 MinPts만 잘 고르면, 군집 개수를 사전에 정하지 않아도 패턴을 안정적으로 찾아내고, 외따로 떨어진 점은 자연스럽게 노이즈로 분리된다. 
 그러나 파라미터 선택에 민감하고, 밀도 스케일이 여러 개 섞인 데이터나 고차원 데이터에서는 성능이 불안정할 수 있다는 한계를 보완하기 위해, 여러 밀도 수준을 한 번에 표현하는 OPTICS, 계층 구조와 안정도 개념을 도입한 HDBSCAN 같은 후속 알고리즘들이 제안되었다. 실제 사용시, 데이터 특성(노이즈 정도, 밀도 편차, 차원) 을 먼저 진단한 뒤, DBSCAN·OPTICS·HDBSCAN·K‑Means 등을 상황에 맞게 조합하여야 한다.
-마지막으로, 더 깊이 공부할 수 있는 자료를 정리하면 다음과 같다.
-	논문
-	Ester et al., 1996, “A Density‑Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise (DBSCAN)”
-	Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Structure”[6]
-	Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)”
+마지막으로, 더 깊이 공부할 수 있는 자료를 정리하면 다음과 같다. 
+
+**논문** 
+	Ester et al., 1996, “A Density‑Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise (DBSCAN)” 
+	Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Structure”[6]  
+	Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)” 
 	이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다.
 	code6. Real-world Applications — 간단 예시 코드 스케치
 	예: 위도·경도 데이터에서 밀집 영역 찾기 (실제 블로그에서는 사용자 데이터로 교체).
-	import pandas as pd
-from sklearn.preprocessing import StandardScaler
 
-df: columns = ["lat", "lon"]  
-coords = df[["lat", "lon"]].values  
-scaler = StandardScaler()  
-coords_scaled = scaler.fit_transform(coords)  
-  
-db = DBSCAN(eps=0.2, min_samples=10)  
-labels = db.fit_predict(coords_scaled)  
-  
-plt.figure(figsize=(6, 6))  
-plt.scatter(df["lon"], df["lat"], c=labels, s=5, cmap="tab20")  
-plt.xlabel("Longitude"); plt.ylabel("Latitude")  
+	
+import pandas as pd 
+from sklearn.preprocessing import StandardScaler  
+ 
+df: columns = ["lat", "lon"]   
+coords = df[["lat", "lon"]].values   
+scaler = StandardScaler()   
+coords_scaled = scaler.fit_transform(coords)   
+   
+db = DBSCAN(eps=0.2, min_samples=10)   
+labels = db.fit_predict(coords_scaled)   
+   
+plt.figure(figsize=(6, 6))   
+plt.scatter(df["lon"], df["lat"], c=labels, s=5, cmap="tab20")   
+plt.xlabel("Longitude"); plt.ylabel("Latitude")   
 plt.title("Density-based clustering of geographic coordinates")  
 plt.show()  
 
  
-Beyond DBSCAN — OPTICS와 HDBSCAN  
+**Beyond DBSCAN — OPTICS와 HDBSCAN**
+
 OPTICS 핵심 수식 (reachability / core distance)  
 	코어 거리(core distance):  
 〖"core\_dist" 〗_"MinPts"  (p)={■("distance to MinPts-th nearest neighbor of " p,&|N_ϵ (p)|≥"MinPts" @∞,&"otherwise" )┤  
@@ -532,64 +537,103 @@ plt.title("OPTICS clustering")
 plt.show()  
 
  
-HDBSCAN 개념 수식: HDBSCAN은 다양한 MinPts(논문에서는 m_pts) 값에 대해 mutual reachability distance 로 그래프를 만들고, 그 MST에서 여러 밀도 레벨의 군집 계층을 도출한다.
-	mutual reachability distance:
-d_"mreach"  (p,q)=max("core\_dist"(p),"core\_dist"(q),d(p,q))
-이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다.
-code8. HDBSCAN 파이썬 예시 
-!pip install hdbscan
+HDBSCAN 개념 수식: HDBSCAN은 다양한 MinPts(논문에서는 m_pts) 값에 대해 mutual reachability distance 로 그래프를 만들고, 그 MST에서 여러 밀도 레벨의 군집 계층을 도출한다. 
+	mutual reachability distance: 
+d_"mreach"  (p,q)=max("core\_dist"(p),"core\_dist"(q),d(p,q)) 
+이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다. 
+code8. HDBSCAN 파이썬 예시  
+!pip install hdbscan  
 
-import hdbscan
+import hdbscan  
 
-clusterer = hdbscan.HDBSCAN(min_cluster_size=20, min_samples=5)  
-hdb_labels = clusterer.fit_predict(X_moon)  
-
-plt.figure(figsize=(5, 4))  
-plt.scatter(X_moon[:, 0], X_moon[:, 1], c=hdb_labels, s=5, cmap="tab10")  
-plt.title("HDBSCAN clustering")  
-plt.show()  
+clusterer = hdbscan.HDBSCAN(min_cluster_size=20, min_samples=5)   
+hdb_labels = clusterer.fit_predict(X_moon)   
+ 
+plt.figure(figsize=(5, 4))   
+plt.scatter(X_moon[:, 0], X_moon[:, 1], c=hdb_labels, s=5, cmap="tab10")    
+plt.title("HDBSCAN clustering")   
+plt.show()   
 
 ---
  
-   https://hex.tech/blog/comparing-density-based-methods/      
-	https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html   
-	http://techblog.netflix.com/2015/07/tracking-down-villains-outlier.html 
-	https://blog.dailydoseofds.com/p/the-limitations-of-dbscan-clustering  
-	https://en.wikipedia.org/wiki/OPTICS_algorithm   
-	https://domino.ai/blog/topology-and-density-based-clustering 
-	https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/how-density-based-clustering-works.htm 
-	https://scikit-learn.org/stable/modules/clustering.html    
-	HDBSCANnonmun.pdf  
-	https://www.scirp.org/reference/referencespapers  
-	https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html 
-	https://machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn 
-	https://www.datacamp.com/tutorial/dbscan-clustering-algorithm 
-	https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ 
-	https://www.nature.com/articles/s41598-021-88822-3 
-	https://thesai.org/Downloads/Volume14No11/Paper_85-Hotspot_Identification_Through_Pick_Up.pdf 
-	https://pure.seoultech.ac.kr/en/publications/a-unified-defect-pattern-analysis-of-wafer-maps-using-density-bas/ 
-	https://hex.tech/blog/comparing-density-based-methods/
-	https://www.baeldung.com/cs/k-means-flaws-improvements 
-	https://www.geeksforgeeks.org/machine-learning/k-means-clustering-introduction/ 
-	https://domino.ai/blog/topology-and-density-based-clustering  
-	https://www.getfocal.co/post/how-density-based-clustering-works  
-	https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html   
-	https://machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn    
-	https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python   
-	https://www.newhorizons.com/resources/blog/dbscan-vs-kmeans-a-guide-in-python 
-	https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html 
-	https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ 
-	https://blog.dailydoseofds.com/p/the-limitations-of-dbscan-clustering  
-	https://www.youtube.com/watch?v=FxBZ5D9o1HU  
-	https://blog.quantinsti.com/dbscan-vs-kmeans/ 
-	https://www.naftaliharris.com/blog/ 
-	https://www.sciencedirect.com/science/article/abs/pii/S1568494624001935 
-	https://gregorredinger.github.io/vis_clustering_algorithms/M1/index.html 
-	http://techblog.netflix.com/2015/07/tracking-down-villains-outlier.html 
-	https://scikit-learn.org/stable/modules/clustering.html 
-	https://www.scirp.org/reference/referencespapers 
-	https://github.com/chriswernst/dbscan-python
-	 https://www.datacamp.com/tutorial/dbscan-clustering-algorithm 
+https://hex.tech/blog/comparing-density-based-methods/      
+   
+	
+https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html   
+
+http://techblog.netflix.com/2015/07/tracking-down-villains-outlier.html 
+
+https://blog.dailydoseofds.com/p/the-limitations-of-dbscan-clustering  
+
+https://en.wikipedia.org/wiki/OPTICS_algorithm   
+
+https://domino.ai/blog/topology-and-density-based-clustering 
+
+https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-statistics/how-density-based-clustering-works.htm 
+
+https://scikit-learn.org/stable/modules/clustering.html    
+
+HDBSCANnonmun.pdf  
+
+https://www.scirp.org/reference/referencespapers  
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html 
+
+https://machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn 
+
+https://www.datacamp.com/tutorial/dbscan-clustering-algorithm 
+
+https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ 
+
+https://www.nature.com/articles/s41598-021-88822-3 
+
+https://thesai.org/Downloads/Volume14No11/Paper_85-Hotspot_Identification_Through_Pick_Up.pdf 
+
+https://pure.seoultech.ac.kr/en/publications/a-unified-defect-pattern-analysis-of-wafer-maps-using-density-bas/ 
+
+https://hex.tech/blog/comparing-density-based-methods/
+
+https://www.baeldung.com/cs/k-means-flaws-improvements 
+
+https://www.geeksforgeeks.org/machine-learning/k-means-clustering-introduction/ 
+
+https://domino.ai/blog/topology-and-density-based-clustering  
+
+https://www.getfocal.co/post/how-density-based-clustering-works  
+
+https://scikit-learn.org/stable/modules/generated/sklearn.cluster.DBSCAN.html   
+
+https://machinecurve.com/index.php/2020/12/09/performing-dbscan-clustering-with-python-and-scikit-learn    
+
+https://programminghistorian.org/en/lessons/clustering-with-scikit-learn-in-python   
+
+https://www.newhorizons.com/resources/blog/dbscan-vs-kmeans-a-guide-in-python 
+
+https://scikit-learn.org/stable/auto_examples/cluster/plot_dbscan.html 
+
+https://www.naftaliharris.com/blog/visualizing-dbscan-clustering/ 
+
+https://blog.dailydoseofds.com/p/the-limitations-of-dbscan-clustering  
+
+https://www.youtube.com/watch?v=FxBZ5D9o1HU  
+
+https://blog.quantinsti.com/dbscan-vs-kmeans/ 
+
+https://www.naftaliharris.com/blog/ 
+
+https://www.sciencedirect.com/science/article/abs/pii/S1568494624001935 
+
+https://gregorredinger.github.io/vis_clustering_algorithms/M1/index.html 
+
+http://techblog.netflix.com/2015/07/tracking-down-villains-outlier.html 
+
+https://scikit-learn.org/stable/modules/clustering.html 
+
+https://www.scirp.org/reference/referencespapers 
+
+https://github.com/chriswernst/dbscan-python
+
+https://www.datacamp.com/tutorial/dbscan-clustering-algorithm 
 
 
 

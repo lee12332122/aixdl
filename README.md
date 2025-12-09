@@ -498,7 +498,8 @@ Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Stru
 	
 Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)”  
 
-이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다. 
+이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다.  
+
 ---
 
 **code6. Real-world Applications — 간단 예시 코드 스케치**

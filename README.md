@@ -68,15 +68,20 @@
 
 <img width="965" height="384" alt="image" src="https://github.com/user-attachments/assets/79a652ba-424a-4313-8547-7e9711fba715" />
 
-<Core Theory> DBSCAN 이해하기
-DBSCAN(DBSCAN: Density-Based Spatial Clustering of Applications with Noise)은 밀도 기반 군집화 알고리즘의 대표 주자로서 두 가지 하이퍼파라미터만 있으면 된다. 반경 ϵ과 최소 이웃 수 MinPts이다. ϵ 은 이웃을 얼마나 넓게 볼지 정하는 거리 기준이고, MinPts는 그 반경 안에 최소 몇 개의 점이 있어야 “밀도가 충분하다”고 인정할지에 대한 기준이다. 이 두 값을 기준으로 각 점은 세 가지 타입으로 나뉜다.
+
+---------
+# <Core Theory DBSCAN 이해하기>
+
+DBSCAN(DBSCAN: Density-Based Spatial Clustering of Applications with Noise)은 밀도 기반 군집화 알고리즘의 대표 주자로서 두 가지 하이퍼파라미터만 있으면 된다. 반경 ϵ과 최소 이웃 수 MinPts이다. ϵ 은 이웃을 얼마나 넓게 볼지 정하는 거리 기준이고, MinPts는 그 반경 안에 최소 몇 개의 점이 있어야 “밀도가 충분하다”고 인정할지에 대한 기준이다. 이 두 값을 기준으로 각 점은 세 가지 타입으로 나뉜다. 
 
 <img width="738" height="389" alt="image" src="https://github.com/user-attachments/assets/0e49d52c-1545-4ea4-bc5b-d702a4f06de3" />
 
-   **-핵심 점(Core point): 반경 ϵ 안에 MinPts 이상 이웃이 있는 점**
-	**-경계 점(Border point): 핵심 점 근처에 있지만, 자기 자신은 핵심 조건을 만족하지 않는 점**
-	**-노이즈(Noise): 어느 핵심 점과도 충분히 가깝지 않은 외딴 점**
-▼▼알고리즘 작동 원리(DBSCAN Algorithm Flow)
+   **-핵심 점(Core point): 반경 ϵ 안에 MinPts 이상 이웃이 있는 점** 
+	**-경계 점(Border point): 핵심 점 근처에 있지만, 자기 자신은 핵심 조건을 만족하지 않는 점** 
+	**-노이즈(Noise): 어느 핵심 점과도 충분히 가깝지 않은 외딴 점** 
+	
+▼▼알고리즘 작동 원리(DBSCAN Algorithm Flow) 
+
 1. 임의의 포인트 P 선택	 
 2. P의 ε 반경 내 이웃 개수 확인	
 3. 이웃 ≥ MinPts → P는 Core Point

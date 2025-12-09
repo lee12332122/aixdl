@@ -490,7 +490,7 @@ DBSCAN을 적용하면,
 그러나 파라미터 선택에 민감하고, 밀도 스케일이 여러 개 섞인 데이터나 고차원 데이터에서는 성능이 불안정할 수 있다는 한계를 보완하기 위해, 여러 밀도 수준을 한 번에 표현하는 OPTICS, 계층 구조와 안정도 개념을 도입한 HDBSCAN 같은 후속 알고리즘들이 제안되었다. 실제 사용시, 데이터 특성(노이즈 정도, 밀도 편차, 차원) 을 먼저 진단한 뒤, DBSCAN·OPTICS·HDBSCAN·K‑Means 등을 상황에 맞게 조합하여야 한다. 
 
 마지막으로, 더 깊이 공부할 수 있는 자료를 정리하면 다음과 같다. 
-
+---
 **논문** 
 Ester et al., 1996, “A Density‑Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise (DBSCAN)” 
 	
@@ -499,6 +499,7 @@ Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Stru
 Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)”  
 
 이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다. 
+---
 
 **code6. Real-world Applications — 간단 예시 코드 스케치**
 	예: 위도·경도 데이터에서 밀집 영역 찾기 (실제 블로그에서는 사용자 데이터로 교체). 
@@ -521,16 +522,20 @@ plt.xlabel("Longitude"); plt.ylabel("Latitude")
 plt.title("Density-based clustering of geographic coordinates")  
 plt.show()  
 
- 
+---
 **Beyond DBSCAN — OPTICS와 HDBSCAN**
 
 OPTICS 핵심 수식 (reachability / core distance)  
 	코어 거리(core distance):  
+	
 〖"core\_dist" 〗_"MinPts"  (p)={■("distance to MinPts-th nearest neighbor of " p,&|N_ϵ (p)|≥"MinPts" @∞,&"otherwise" )┤  
 	도달 가능 거리(reachability distance):  
+	
 "reachability\_dist"(p∣o)=max(〖"core\_dist" 〗_"MinPts"  (o),d(o,p))  
 
 OPTICS는 각 점을 방문하면서 이 reachability distance를 기록하고, 이를 y축으로 하는 reachability plot을 만든다.  
+
+---
 
 **code7. OPTICS 간단 코드**
 
@@ -544,13 +549,16 @@ plt.scatter(X_moon[:, 0], X_moon[:, 1], c=optics_labels, s=5, cmap="tab10")
 plt.title("OPTICS clustering")  
 plt.show()  
 
- 
+---
+
 HDBSCAN 개념 수식: HDBSCAN은 다양한 MinPts(논문에서는 m_pts) 값에 대해 mutual reachability distance 로 그래프를 만들고, 그 MST에서 여러 밀도 레벨의 군집 계층을 도출한다. 
 
 mutual reachability distance: 
 d_"mreach"  (p,q)=max("core\_dist"(p),"core\_dist"(q),d(p,q)) 
 
-이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다. 
+**이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다.** 
+
+---
 
 **code8. HDBSCAN 파이썬 예시**  
 

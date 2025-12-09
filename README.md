@@ -487,16 +487,19 @@ DBSCAN을 적용하면,
 
 
 정리하자면, DBSCAN은 “밀도가 높은 영역=군집”이라는 단순한 아이디어로부터 출발해, K‑Means가 놓치는 복잡한 클러스터 구조와 이상치를 동시에 다룰 수 있는 강력한 도구다. ϵ 과 MinPts만 잘 고르면, 군집 개수를 사전에 정하지 않아도 패턴을 안정적으로 찾아내고, 외따로 떨어진 점은 자연스럽게 노이즈로 분리된다. 
-그러나 파라미터 선택에 민감하고, 밀도 스케일이 여러 개 섞인 데이터나 고차원 데이터에서는 성능이 불안정할 수 있다는 한계를 보완하기 위해, 여러 밀도 수준을 한 번에 표현하는 OPTICS, 계층 구조와 안정도 개념을 도입한 HDBSCAN 같은 후속 알고리즘들이 제안되었다. 실제 사용시, 데이터 특성(노이즈 정도, 밀도 편차, 차원) 을 먼저 진단한 뒤, DBSCAN·OPTICS·HDBSCAN·K‑Means 등을 상황에 맞게 조합하여야 한다.
+그러나 파라미터 선택에 민감하고, 밀도 스케일이 여러 개 섞인 데이터나 고차원 데이터에서는 성능이 불안정할 수 있다는 한계를 보완하기 위해, 여러 밀도 수준을 한 번에 표현하는 OPTICS, 계층 구조와 안정도 개념을 도입한 HDBSCAN 같은 후속 알고리즘들이 제안되었다. 실제 사용시, 데이터 특성(노이즈 정도, 밀도 편차, 차원) 을 먼저 진단한 뒤, DBSCAN·OPTICS·HDBSCAN·K‑Means 등을 상황에 맞게 조합하여야 한다. 
+
 마지막으로, 더 깊이 공부할 수 있는 자료를 정리하면 다음과 같다. 
 
 **논문** 
 	Ester et al., 1996, “A Density‑Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise (DBSCAN)” 
 	Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Structure”[6]  
-	Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)” 
-	이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다.
-	code6. Real-world Applications — 간단 예시 코드 스케치
-	예: 위도·경도 데이터에서 밀집 영역 찾기 (실제 블로그에서는 사용자 데이터로 교체).
+	Campello et al., 2013, “A Hierarchical Density‑Based Clustering Method and Its Applications (HDBSCAN)”  
+
+이 글의 목표는 “DBSCAN을 처음 접하는 독자가, 이론–수식–코드–시각화–응용 사례까지 한 번에 훑고, 실제 프로젝트에 바로 써 볼 수 있도록 돕는 것”이다. 앞에서 살펴본 예제와 코드, 시각화 템플릿만 잘 변형해도, 도시 교통, 금융 사기, 반도체, 감염병, 부동산 등 다양한 도메인에 밀도 기반 군집화를 적용해 볼 수 있을 것이다. 
+
+code6. Real-world Applications — 간단 예시 코드 스케치 
+	예: 위도·경도 데이터에서 밀집 영역 찾기 (실제 블로그에서는 사용자 데이터로 교체). 
 
 	
 import pandas as pd 

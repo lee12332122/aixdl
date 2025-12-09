@@ -556,7 +556,7 @@ HDBSCAN 개념 수식: HDBSCAN은 다양한 MinPts(논문에서는 m_pts) 값에
 mutual reachability distance: 
 d_"mreach"  (p,q)=max("core\_dist"(p),"core\_dist"(q),d(p,q)) 
 
-**이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다.** 
+이 거리를 가중치로 하는 MST 위에서, 거리를 증가시키며 군집이 분리되는 과정을 추적하면 “밀도 기반 덴드로그램”을 얻을 수 있다. 
 
 ---
 

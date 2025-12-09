@@ -234,7 +234,7 @@ plt.show()
 
 from sklearn.cluster import KMeans
 
-# K-Means vs DBSCAN on two moons
+** K-Means vs DBSCAN on two moons **
 kmeans = KMeans(n_clusters=2, random_state=42)
 km_labels = kmeans.fit_predict(X_moon)
 
@@ -279,7 +279,7 @@ plt.show()
 
 ----------------
 
-#### <Beyond DBSCAN — OPTICS와 HDBSCAN> 
+# <Beyond DBSCAN — OPTICS와 HDBSCAN> 
 
 DBSCAN은 강력하지만 두 가지 큰 한계가 있다. 
 1.	ε(반경) 값을 직접 잘 맞춰야 한다. 
@@ -321,7 +321,7 @@ OPTICS와 HDBSCAN의 자세한 수식과 코드는 아래 추가 자료에서 �
 
 -----------------------------------------------
 
-**<Real-world Application: 실제 데이터 적용 사례 (지도 데이터, 이상치 탐지 등)>**
+# <Real-world Application: 실제 데이터 적용 사례 (지도 데이터, 이상치 탐지 등)>
 
 1.	도시 교통 빅데이터: 택시·버스 GPS 좌표를 DBSCAN으로 군집화 → 승하차 핫스팟 분석 → 도시 내 교통 혼잡구역, 신규 노선 후보 발굴 
 
@@ -344,7 +344,7 @@ OPTICS와 HDBSCAN의 자세한 수식과 코드는 아래 추가 자료에서 �
 5. 부동산 시장 분석: 실거래가, 위치 기반 DBSCAN → 유사 가격권/이상거래군 자동분류
 
 -------------------------------
-#### <사용 방안 고찰>
+# <사용 방안 고찰>
 
 ### 버스·지하철 승하차 데이터를 활용한 도시 핫플레이스 탐구
 

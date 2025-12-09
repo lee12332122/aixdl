@@ -227,7 +227,7 @@ plt.show()
 
 -------------------------------------
 
-**< Code & Visualization — Python 실습>**
+# < Code & Visualization — Python 실습>
 
 이제 코드를 통해 직접 눈으로 확인해 보자. Python에서는 scikit‑learn의 DBSCAN 클래스를 사용해 몇 줄만으로 밀도 기반 군집화를 시도할 수 있다. make_moons, make_circles 같은 toy 데이터셋을 활용하면, K‑Means가 실패하는 비선형 구조를 DBSCAN이 어떻게 자연스럽게 복원하는지 한눈에 볼 수 있다.
  먼저 데이터를 생성하고, K‑Means와 DBSCAN을 각각 학습시킨다. 그런 다음 2×2 또는 3×1 레이아웃으로 결과를 시각화해 “K‑Means vs DBSCAN”, epsilon 변화에 따른 군집 구조 변화, 노이즈 포인트 시각화 등을 반복해서 보여 준다. 이 패턴만 익혀 두면, 뒤에서 다룰 도시 교통 데이터나 금융 거래, 반도체 웨이퍼 데이터에도 그대로 응용할 수 있다.

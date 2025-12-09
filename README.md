@@ -491,7 +491,8 @@ DBSCAN을 적용하면,
 
 마지막으로, 더 깊이 공부할 수 있는 자료를 정리하면 다음과 같다. 
 ---
-**논문** 
+**논문**  
+ 
 Ester et al., 1996, “A Density‑Based Algorithm for Discovering Clusters in Large Spatial Databases with Noise (DBSCAN)” 
 	
 Ankerst et al., 1999, “OPTICS: Ordering Points To Identify the Clustering Structure”[6]  
